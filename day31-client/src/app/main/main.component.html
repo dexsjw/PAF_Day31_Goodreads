@@ -1,0 +1,43 @@
+<section *ngIf="books.length <= 0">
+    <form [formGroup]="form" method="GET" (ngSubmit)="displayBooks()">
+    <!--     <div>
+            <label for="title">Title:</label>
+        </div>
+        <div>
+            <input type="text" id="title" formControlName="title"  placeholder="Leave blank to get first 10 books" size="30">
+        </div> -->
+        <div>
+            <label for="limit">Limit:</label>
+        </div>
+        <div>
+            <input type="text" id="limit" formControlName="limit" placeholder="Please enter integer only">
+        </div>
+        <div>
+            <label for="offset">Offset:</label>
+        </div>
+        <div>
+            <input type="text" id="offset" formControlName="offset"  placeholder="Please enter integer only">
+        </div>
+        <div>
+            <button type="submit">Get books!</button>
+        </div>
+    </form>
+</section>
+<section *ngIf="books.length > 0">
+    <button (click)="again()">Find Again!</button>
+    <div *ngFor="let book of books">
+        <p>ID: {{ book.bookId}}</p>
+        <p>Title: {{ book.title }}</p>
+        <p>Author: {{ book.authors }}</p>
+        <p>Description: </p>
+        <p>{{ book.description }}</p>
+        <p>Edition: {{ book.edition }}</p>
+        <p>Format: {{ book.format }}</p>
+        <p>Pages: {{ book.pages }}</p>
+        <p>Rating: {{ book.rating }}</p>
+        <p>Rating Count: {{ book.ratingCount }}</p>
+        <p>Review Count: {{ book.reviewCount }}</p>
+        <p>Genres: {{ book.genres }}</p>
+        <img src="{{ book.imageUrl }}" alt="">
+    </div>
+</section>
